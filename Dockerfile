@@ -1,7 +1,7 @@
-FROM adoptopenjdk/openjdk11:jdk-11.0.5_10-alpine as builder
+FROM maven:3.8.3-openjdk-17 as builder
 ADD . /src
 WORKDIR /src
-RUN ./mvnw package -DskipTests
+RUN mvn package -DskipTests
 
 
 FROM alpine:3.10.3 as packager
